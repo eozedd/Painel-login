@@ -4,6 +4,8 @@
  */
 package br.com.emerson._usjt_psc_segunda_sistema_academico;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author 823211664
@@ -28,6 +30,8 @@ public class LoginTela extends javax.swing.JFrame {
 
         loginTextField = new javax.swing.JTextField();
         senhaPasswordFiel = new javax.swing.JPasswordField();
+        okLoginButton = new javax.swing.JButton();
+        cancelarLoginButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,15 +44,28 @@ public class LoginTela extends javax.swing.JFrame {
 
         senhaPasswordFiel.setBorder(javax.swing.BorderFactory.createTitledBorder("Digite sua senha"));
 
+        okLoginButton.setText("OK");
+        okLoginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                okLoginButtonActionPerformed(evt);
+            }
+        });
+
+        cancelarLoginButton.setText("Cancelar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(184, 184, 184)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(senhaPasswordFiel, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(loginTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(senhaPasswordFiel, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                    .addComponent(loginTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(okLoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cancelarLoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(189, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -58,7 +75,11 @@ public class LoginTela extends javax.swing.JFrame {
                 .addComponent(loginTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
                 .addComponent(senhaPasswordFiel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(okLoginButton)
+                    .addComponent(cancelarLoginButton))
+                .addContainerGap(176, Short.MAX_VALUE))
         );
 
         pack();
@@ -67,6 +88,27 @@ public class LoginTela extends javax.swing.JFrame {
     private void loginTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_loginTextFieldActionPerformed
+
+    private void okLoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okLoginButtonActionPerformed
+       //1-Pegar o login que o usuario digitou
+       String login = loginTextField.getText();
+       //2- Pegar senha que o usuário digitou
+       String senha = new String(senhaPasswordField.getPassword());
+       //3- Verificar se ambos são iguais a admin
+       if (login.equals("Admin") && senha.equals("admin")){
+         
+       //4- se for o caso, dar boas vindas
+           JOptionPane.showMessageDialog(null, "Bem vindo");
+       }
+       else{
+       //5- Caso contrário, informar par chave/valor incorreto
+       JOptionPane.showMessageDialog(
+               null,
+                "Usuário ou senha invalido"
+       );
+       
+     }  
+    }//GEN-LAST:event_okLoginButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,7 +146,9 @@ public class LoginTela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton cancelarLoginButton;
     private javax.swing.JTextField loginTextField;
+    private javax.swing.JButton okLoginButton;
     private javax.swing.JPasswordField senhaPasswordFiel;
     // End of variables declaration//GEN-END:variables
 }
